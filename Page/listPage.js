@@ -1,5 +1,10 @@
 const axios = require("../Base/axios-instance");
 
+function generateName(){
+    const name =  ("List Number: " + parseInt(Math.random() * 10000));
+    return name;
+}
+
 function getIdList() {
     const endpoint = `/1/boards/${axios.myID}/lists`
     return axios.get(endpoint);
@@ -50,4 +55,4 @@ function putDeleteLastList(idLast){
 }
 
 
-module.exports = {getIdList, postCreateList, putUpdateListName, putDeleteLastList, getLastList, getFirstList};
+module.exports = {getIdList, postCreateList, putUpdateListName, putDeleteLastList, getLastList, getFirstList, generateName};

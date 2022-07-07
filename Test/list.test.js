@@ -12,7 +12,7 @@ describe('Trello API testing', () => {
         });
 
         test('[TC-0001]Create List with random name ', async () => {
-            const listName = ("List Number: " + parseInt(Math.random() * 10000));
+            const listName = await listPage.generateName();
             const response = await listPage.postCreateList(listName);
             expect(response.status).toBe(200);
             expect(response.data.name).toEqual(listName);
@@ -23,7 +23,7 @@ describe('Trello API testing', () => {
         });
 
         test('[TC-0003]Should Updated List Name', async () => {
-            const newName = ("Name is update here: " + parseInt(Math.random() * 10000));
+            const newName = ("Name is update here: " + listPage.generateName());
             const response = await listPage.putUpdateListName(idFirst,newName);
 
             expect(response.status).toBe(200);
